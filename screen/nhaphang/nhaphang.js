@@ -11,6 +11,10 @@ export default function nhaphang({ navigation }) {
     const [name, setName] = useState()
     const [search, setSearch] = useState()
     const [messages, setMessages] = useState([])
+    const [modalVisible, setModalVisible] = useState(false);
+    const [soluong, setSoLuong] = useState(0)
+
+
 
     const DATA = [
         { id: 1, title: 'Bột giặt Aba', gia: 100000, uri: 'https://cdn.tgdd.vn/Products/Images/2463/88314/bhx/bot-giat-nhiet-aba-sach-tinh-tuom-400g-201912031037171175.jpg' },
@@ -59,6 +63,7 @@ export default function nhaphang({ navigation }) {
             title={item.title}
             gia={item.gia}
             uri={item.uri}
+            onPress={() => setModalVisible(true)}
         />
     );
 
@@ -236,6 +241,156 @@ export default function nhaphang({ navigation }) {
                         </View>
 
                         <Text style={{ color: '#26313B', fontWeight: 'bold', fontSize: 23, paddingLeft: 12, paddingTop: 20 }}>Giá tốt mỗi ngày</Text>
+
+
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible}
+                            onRequestClose={() => {
+                                Alert.alert("Modal has been closed.");
+                            }}
+                        >
+                            <View style={{ flex: 1, justifyContent: 'flex-end', }}>
+
+                                <View style={{ backgroundColor: '#FFFFFF', height: '80%', borderTopRightRadius: 28, borderTopLeftRadius: 28 }} >
+
+                                    <TouchableOpacity onPress={() => setModalVisible(false)} style={{ height: 50, backgroundColor: '#FFFFFF', borderTopRightRadius: 28, borderTopLeftRadius: 28 }}>
+                                        <AntDesign name="closecircleo" size={24} color="black" style={{ alignSelf: 'flex-end', justifyContent: 'center', paddingTop: 15, paddingRight: 15 }} />
+                                    </TouchableOpacity>
+
+
+                                    <ScrollView>
+
+                                        <View style={{
+                                            //backgroundColor: 'red'
+                                        }}>
+
+                                            <View style={{
+                                                width: '80%',
+                                                height: 200,
+                                                //      backgroundColor: 'gray',
+                                                alignSelf: 'center',
+                                                flex: 1,
+                                            }}>
+                                                <Swiper autoplay={true} >
+
+
+                                                    <Image
+                                                        source={{ uri: 'https://vtv1.mediacdn.vn/thumb_w/650/2017/the-morality-of-candy-1494748432267.jpg' }}
+                                                        style={{
+                                                            width: '100%',
+                                                            height: 200,
+                                                            borderColor: '#d35647',
+                                                            borderRadius: 8,
+                                                            resizeMode: 'contain',
+
+                                                            alignSelf: 'center',
+
+                                                            //  backgroundColor: 'orange'
+                                                        }}
+                                                    />
+
+
+
+                                                    <Image
+                                                        source={{ uri: 'https://bianhapkhau.net/wp-content/uploads/2020/05/bia-heineken-0-%C4%91%E1%BB%99-chai-330ml.jpg' }}
+                                                        style={{
+                                                            width: '100%',
+                                                            height: 200,
+                                                            borderColor: '#d35647',
+                                                            borderRadius: 8,
+                                                            resizeMode: 'contain',
+
+                                                            alignSelf: 'center',
+
+                                                            //  backgroundColor: 'orange'
+                                                        }}
+                                                    />
+
+                                                </Swiper>
+                                            </View>
+
+                                            <View style={{ paddingHorizontal: 18, paddingTop: 25 }}>
+                                                <Text style={{ fontSize: 22, color: '#2B3544', fontWeight: 'bold' }}>[Tết] Bia Hà Nội lon 330ml </Text>
+                                                <Text style={{ fontSize: 15, color: '#86878D', fontWeight: 'bold', paddingVertical: 12 }}>Thùng 24 lon</Text>
+                                                <Text style={{ fontSize: 17, color: '#CF2E2F', fontWeight: 'bold' }}>233,000đ</Text>
+
+                                                {/*  */}
+                                                <Text style={{ fontSize: 22, color: '#2B3544', fontWeight: 'bold', paddingTop: 17 }}>Thông tin sản phẩm</Text>
+                                                <View style={{ flexDirection: 'row', paddingVertical: 12 }}>
+                                                    <Text style={{ fontSize: 15, color: '#86878D', fontWeight: 'bold', paddingRight: 59 }}>Xuất xứ</Text>
+                                                    <Text style={{ fontSize: 15, color: '#2B3544', fontWeight: 'bold' }}>Việt Nam</Text>
+                                                </View>
+
+                                                <View style={{ flexDirection: 'row' }}>
+                                                    <Text style={{ fontSize: 15, color: '#86878D', fontWeight: 'bold', paddingRight: 46 }}>Dung tích</Text>
+                                                    <Text style={{ fontSize: 15, color: '#2B3544', fontWeight: 'bold' }}>330ml</Text>
+                                                </View>
+
+                                                <View style={{ flexDirection: 'row', paddingVertical: 12 }}>
+                                                    <Text style={{ fontSize: 15, color: '#86878D', fontWeight: 'bold', paddingRight: 25 }}>Hạn sử dụng</Text>
+                                                    <Text style={{ fontSize: 15, color: '#2B3544', fontWeight: 'bold' }}>1 năm (từ ngày sx)</Text>
+                                                </View>
+
+                                                {/*  */}
+                                                <Text style={{ fontSize: 22, color: '#2B3544', fontWeight: 'bold', paddingTop: 10 }}>Mô tả</Text>
+                                                <View style={{ paddingLeft: 20, paddingTop: 17 }}>
+                                                    <Text style={{ color: '#696D73', fontSize: 15 }}>Không dành cho người dưới 18 tuổi</Text>
+                                                    <Text style={{ color: '#696D73', fontSize: 15, paddingVertical: 8 }}>Không dùng thuốc uống này khi tham gia giao thông</Text>
+                                                    <Text style={{ color: '#696D73', fontSize: 15, }}>Bao bì sản phẩm có thể thay đổi theo từng lô sản xuất</Text>
+                                                </View>
+
+
+                                            </View>
+
+                                        </View>
+
+                                    </ScrollView>
+
+
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderTopWidth: 0.3, height: 65, borderColor: 'gray', }}>
+
+                                        <TouchableOpacity style={{
+                                            backgroundColor: '#EAF0EC', width: 30, height: 30,
+                                            borderRadius: 8, alignSelf: 'center', alignItems: 'center', justifyContent: 'center'
+                                        }} onPress={() => setSoLuong(soluong - 1)}>
+                                            <AntDesign name="minus" size={24} color="#5684FB" style={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }} />
+                                        </TouchableOpacity>
+
+                                        <TextInput style={{
+                                            width: '60%', height: 40, borderWidth: 0.3, borderColor: 'gray',
+                                            borderRadius: 8, paddingHorizontal: 4, marginHorizontal: 4,
+                                        }}
+                                            value={soluong}
+                                        //  placeholder="Số Lượng:"
+                                        >
+                                            <Text style={{ color: 'gray' }}>Số Lượng:{soluong}</Text>
+                                        </TextInput>
+
+                                        <TouchableOpacity style={{
+                                            backgroundColor: '#EAF0EC', width: 30, height: 30,
+                                            borderRadius: 8, alignSelf: 'center', alignItems: 'center', justifyContent: 'center'
+                                        }} onPress={() => setSoLuong(soluong + 1)}>
+                                            <AntDesign name="plus" size={24} color="#5684FB" />
+                                        </TouchableOpacity>
+                                    </View>
+
+                                    <TouchableOpacity onPress={() => setModalVisible(false)} style={{
+                                        marginBottom: 10, borderRadius: 8,
+                                        alignSelf: 'center', alignItems: 'center', justifyContent: 'center', backgroundColor: '#3369FD',
+                                        height: 40, width: 260
+                                    }}  >
+                                        <Text style={{
+                                            color: 'white', justifyContent: 'center',
+                                            alignItems: 'center', alignSelf: 'center', fontSize: 16, fontWeight: 'bold'
+                                        }}>Thêm vào giỏ hàng</Text>
+                                    </TouchableOpacity>
+
+                                </View>
+                            </View>
+                        </Modal >
+
 
                         <FlatList
                             data={DATA}

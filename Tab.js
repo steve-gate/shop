@@ -55,6 +55,20 @@ export function Tab0() {
                     ),
                 }}
             />
+            <Tab.Screen
+                name="trangchu"
+                component={trangchu}
+                options={{
+                    headerShow: false,
+                    tabBarLabel: 'them',
+                    tabBarIcon: ({ color, size, focused }) => (
+                        focused
+                            ? <AntDesign name="message1" size={24} color="#4197EC" />
+                            : <AntDesign name="message1" size={24} color="gray" />
+                    ),
+
+                }}
+            />
         </Tab.Navigator>
 
     )

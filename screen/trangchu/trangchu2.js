@@ -15,6 +15,9 @@ export default function trangchu2({ navigation }) {
 
     ]
 
+    const [modalVisible, setModalVisible] = useState(false);
+
+
     return (
         <SafeAreaView style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
