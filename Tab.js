@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, AntDesign } from '@expo/vector-icons';
-import trangchu from './screen/trangchu/trangchu.js'
+import plSP from './screen/trangchu/plSP.js'
 import trangchu2 from './screen/trangchu/trangchu2.js'
 import nhaphang from './screen/nhaphang/nhaphang.js';
 import hopthu from './screen/hopthu/hopthu.js'
@@ -56,11 +56,10 @@ export function Tab0() {
                 }}
             />
             <Tab.Screen
-                name="trangchu"
-                component={trangchu}
+                name="plSP"
+                component={plSP}
                 options={{
-                    headerShow: false,
-                    tabBarLabel: 'them',
+                    tabBarLabel: 'plSP',
                     tabBarIcon: ({ color, size, focused }) => (
                         focused
                             ? <AntDesign name="message1" size={24} color="#4197EC" />
