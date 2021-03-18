@@ -3,10 +3,10 @@ import {
     Text, StyleSheet, View, TouchableOpacity, SafeAreaView,
     FlatList, Image, Modal, TextInput, Button, ScrollView
 } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import Swiper from 'react-native-swiper';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { addToCart } from "../../redux/cartSlice"
 
 
 
@@ -16,9 +16,14 @@ export default function plSP({ navigation }) {
     const [anHien, setanHien] = useState(false)
     const [anHien0, setanHien0] = useState(false)
     const [anHien1, setanHien1] = useState(false)
+    const [count, setCount] = useState(-12)
 
-    const [sp, setSp] = useState()
+    const [sp, setSp] = useState([])
     const [title, setTitle] = useState('');
+
+    const dispatch = useDispatch();
+
+
 
 
     const filteredProducts = useSelector(state => state.products.products.filter(
@@ -28,7 +33,51 @@ export default function plSP({ navigation }) {
     ))
 
     //  console.log(filteredProducts)
-    console.log(sp)
+    //console.log(sp)
+
+    const cartItems = useSelector(state => state.cartItems.cartItems)
+    console.log(cartItems)
+
+
+
+    /*   const addToCart = (itemData) => {
+          dispatch({
+              type: "addToCart",
+              item: itemData
+          });
+      }
+      const addCartHandler = (book) => {
+  
+          let qty = 1;
+          book.quantity = qty;
+  
+          addToCart(book);
+          getItemsCount();
+  
+      }
+   */
+
+
+    const addToCart2 = (itemData) => {
+        dispatch({
+            type: "AddToCart",
+            item: itemData
+        });
+    }
+
+    const addCartHandler = (book) => {
+
+        let qty = 1;
+        book.quantity = qty;
+
+        addToCart2(book);
+
+    }
+    /*   const getItemsCount = () => {
+          setCount(count + 1)
+      } */
+
+
 
 
     const categories = [
@@ -111,7 +160,9 @@ export default function plSP({ navigation }) {
                             borderColor: 'red',
                         }}>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() =>
+                                addCartHandler(sp)
+                            }>
                                 <Text style={{
                                     fontSize: 20, fontWeight: 'bold',
                                     color: "red",
@@ -127,6 +178,45 @@ export default function plSP({ navigation }) {
         )
     }
 
+    //danh sach SP trong gio hang
+    const spCart = ({ item }) => {
+        return (
+            <View style={{
+                flexDirection: 'row', borderBottomWidth: 0.5,
+                borderBottomColor: "gray", marginBottom: 8,
+                padding: 10,
+            }}>
+                <Image style={{
+                    width: 100, height: 160
+                }} source={{ uri: item.image }} />
+
+                <View style={{
+                    justifyContent: 'space-around',
+                    paddingLeft: 13
+                }}>
+                    <Text style={{}} numberOfLines={3}>{item.title}</Text>
+                    <Text style={{}}>Price: {item.Price}</Text>
+
+                    <View style={{
+                        flexDirection: 'row',
+                    }}>
+                        <TouchableOpacity>
+                            <AntDesign name="minussquareo" size={24} color="black" />
+                        </TouchableOpacity>
+                        <Text style={{ paddingHorizontal: 10 }}>{item.quantity}</Text>
+
+                        <TouchableOpacity>
+                            <AntDesign name="plussquareo" size={24} color="black" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                            <Entypo style={{ paddingLeft: 80 }} name="trash" size={24} color="black" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        )
+    }
 
     return (
         <View style={{
@@ -173,7 +263,7 @@ export default function plSP({ navigation }) {
                                     <AntDesign name="left" size={24} color="black" />
                                 </TouchableOpacity>
 
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => setanHien(false)}>
                                     <AntDesign name="shoppingcart" size={24} color="black" />
                                 </TouchableOpacity>
                             </View>
@@ -238,7 +328,9 @@ export default function plSP({ navigation }) {
                                 justifyContent: 'center'
                             }}>
 
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() =>
+                                    addCartHandler(sp)
+                                }>
                                     <Text style={{
                                         fontSize: 20, fontWeight: 'bold',
                                         color: "red",
@@ -252,6 +344,17 @@ export default function plSP({ navigation }) {
                     </ScrollView>
                 )
             }
+
+            {
+                !anHien && anHien0 && (
+                    <ScrollView>
+                        <View style={{ flex: 1 }}>
+
+                        </View>
+                    </ScrollView>
+                )
+            }
+
         </View >
 
 
