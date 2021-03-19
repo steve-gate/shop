@@ -7,7 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import nhaphang from './screen/nhaphang/nhaphang.js'
 import trangchu2 from './screen/trangchu/trangchu2.js'
 import { Tab0 } from './Tab';
-import store from './redux/store'
+import { store } from './redux/store';
+
 
 const Stack = createStackNavigator();
 

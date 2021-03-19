@@ -36,7 +36,7 @@ export default function plSP({ navigation }) {
     //console.log(sp)
 
     const cartItems = useSelector(state => state.cartItems.cartItems)
-    console.log(cartItems)
+    console.log(cartItems.length)
 
 
 
@@ -57,7 +57,7 @@ export default function plSP({ navigation }) {
       }
    */
 
-
+    //Them sp vao gio hang
     const addToCart2 = (itemData) => {
         dispatch({
             type: "AddToCart",
@@ -76,6 +76,16 @@ export default function plSP({ navigation }) {
     /*   const getItemsCount = () => {
           setCount(count + 1)
       } */
+
+
+    //Xoa SP khoi gio hang
+    const deleteFromCart = (itemData) => {
+        dispatch({
+            type: "DeleteFromCart",
+            item: itemData
+        });
+    }
+
 
 
 
@@ -200,16 +210,20 @@ export default function plSP({ navigation }) {
                     <View style={{
                         flexDirection: 'row',
                     }}>
-                        <TouchableOpacity>
+
+                        <TouchableOpacity >
                             <AntDesign name="minussquareo" size={24} color="black" />
                         </TouchableOpacity>
+
+
+
                         <Text style={{ paddingHorizontal: 10 }}>{item.quantity}</Text>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity >
                             <AntDesign name="plussquareo" size={24} color="black" />
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => deleteFromCart(item)}>
                             <Entypo style={{ paddingLeft: 80 }} name="trash" size={24} color="black" />
                         </TouchableOpacity>
                     </View>
@@ -328,8 +342,10 @@ export default function plSP({ navigation }) {
                                 justifyContent: 'center'
                             }}>
 
-                                <TouchableOpacity onPress={() =>
-                                    addCartHandler(sp)
+                                <TouchableOpacity onPress={() => {
+                                    addCartHandler(sp);
+                                    setanHien(false);
+                                }
                                 }>
                                     <Text style={{
                                         fontSize: 20, fontWeight: 'bold',
@@ -347,11 +363,9 @@ export default function plSP({ navigation }) {
 
             {
                 !anHien && anHien0 && (
-                    <ScrollView>
-                        <View style={{ flex: 1 }}>
-
-                        </View>
-                    </ScrollView>
+                    <View style={{ flex: 1 }}>
+                        <FlatList data={cartItems} renderItem={spCart} />
+                    </View>
                 )
             }
 
