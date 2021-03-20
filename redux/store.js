@@ -19,13 +19,6 @@ import cartSlice from './cartSlice';
 
 
 
-/* const RootReducer = combineReducers({
-    products: ProductsReducers,
-    cartItems: CartReducers,
-
-
-});
-const store = createStore(RootReducer); */
 
 
 

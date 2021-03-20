@@ -40,22 +40,7 @@ export default function plSP({ navigation }) {
 
 
 
-    /*   const addToCart = (itemData) => {
-          dispatch({
-              type: "addToCart",
-              item: itemData
-          });
-      }
-      const addCartHandler = (book) => {
-  
-          let qty = 1;
-          book.quantity = qty;
-  
-          addToCart(book);
-          getItemsCount();
-  
-      }
-   */
+
 
     //Them sp vao gio hang
     const addToCart2 = (itemData) => {
@@ -73,9 +58,6 @@ export default function plSP({ navigation }) {
         addToCart2(book);
 
     }
-    /*   const getItemsCount = () => {
-          setCount(count + 1)
-      } */
 
 
     //Xoa SP khoi gio hang
