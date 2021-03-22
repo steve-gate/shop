@@ -68,6 +68,22 @@ export default function plSP({ navigation }) {
         });
     }
 
+    //tang,giam quantity vao sp
+    const incrementQuantity = (itemData) => {
+        dispatch({
+            type: "IncrementQuantity",
+            item: itemData
+        })
+
+    }
+
+    const decrementQuantity = (itemData) => {
+        dispatch({
+            type: "DecrementQuantity",
+            item: itemData
+        })
+
+    }
 
 
 
@@ -193,7 +209,12 @@ export default function plSP({ navigation }) {
                         flexDirection: 'row',
                     }}>
 
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => {
+                            item.quantity == 1
+                                ? deleteFromCart(item)
+                                : decrementQuantity(item)
+                        }
+                        }>
                             <AntDesign name="minussquareo" size={24} color="black" />
                         </TouchableOpacity>
 
@@ -201,7 +222,7 @@ export default function plSP({ navigation }) {
 
                         <Text style={{ paddingHorizontal: 10 }}>{item.quantity}</Text>
 
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => incrementQuantity(item)}>
                             <AntDesign name="plussquareo" size={24} color="black" />
                         </TouchableOpacity>
 

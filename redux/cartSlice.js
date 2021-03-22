@@ -47,6 +47,27 @@ const cartSlice = createReducer(initialState, {
         }
     },
 
+    [incrementQuantity.type]: (state, action) => {
+        return {
+            ...state,
+            cartItems: state.cartItems.map(
+                item => item.id === action.item.id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            )
+        }
+    },
+
+    [decrementQuantity.type]: (state, action) => {
+        return {
+            ...state,
+            cartItems: state.cartItems.map(
+                item => item.id === action.item.id
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            )
+        }
+    }
 
 
 }

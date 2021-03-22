@@ -11,8 +11,7 @@ import {
 } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import ProductsReducers from './ProductsReducers';
-import CartReducers from './CartReducers';
+
 
 import productsSlice from './productsSlice';
 import cartSlice from './cartSlice';
