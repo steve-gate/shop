@@ -367,7 +367,93 @@ export default function plSP({ navigation }) {
             {
                 !anHien && anHien0 && (
                     <View style={{ flex: 1 }}>
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'flex-start',
+                            //     paddingHorizontal: 5,
+                            height: 55,
+                            backgroundColor: "white",
+                            marginTop: 30,
+                            paddingHorizontal: 15,
+                            borderBottomWidth: 0.2,
+                            borderBottomColor: 'gray',
+                            marginBottom: 5
+                        }}>
+                            <TouchableOpacity
+                                style={{
+                                    alignSelf: 'center',
+                                    backgroundColor: "#919191",
+                                    borderRadius: 20,
+                                    height: 30,
+                                    width: 30,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}
+                                onPress={() => setanHien(true)}>
+                                <AntDesign name="left" size={24} color="white" />
+                            </TouchableOpacity>
+
+
+                            <Text style={{
+                                fontSize: 17,
+                                fontWeight: 'bold',
+                                alignSelf: 'center',
+                                paddingLeft: '30%',
+                                //    backgroundColor: "#919191",
+                            }}>Giỏ hàng</Text>
+                        </View>
                         <FlatList data={cartItems} renderItem={spCart} />
+
+                        <View style={{
+                            backgroundColor: 'white',
+                            height: 80,
+                            justifyContent: 'center',
+                            borderTopColor: 'gray',
+                            borderTopWidth: 0.5
+                        }}>
+                            <View style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                paddingHorizontal: '10%',
+                                marginTop: 5
+                            }}>
+                                <Text style={{
+                                    color: 'gray',
+                                    fontWeight: 'bold',
+                                    fontSize: 17
+                                }}>Thành tiền</Text>
+                                <Text style={{
+                                    color: 'red',
+                                    fontWeight: 'bold',
+                                    fontSize: 17
+                                }}>{result}</Text>
+
+                            </View>
+
+                            <View style={{
+                                alignItems: 'center',
+                                marginTop: 10
+
+                            }}>
+                                <TouchableOpacity style={{
+                                    backgroundColor: '#FF414E',
+                                    width: '80%',
+                                    height: 45,
+                                    //     alignSelf: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: 10,
+                                }}>
+                                    <Text style={{
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                        alignSelf: 'center',
+                                        fontSize: 18
+                                    }}>
+                                        Tiến Hành Đặt Hàng
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
                     </View>
                 )
             }
