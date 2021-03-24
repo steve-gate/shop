@@ -187,12 +187,18 @@ export default function plSP({ navigation }) {
     }
 
     //danh sach SP trong gio hang
+    //danh sach SP trong gio hang
     const spCart = ({ item }) => {
         return (
+
             <View style={{
-                flexDirection: 'row', borderBottomWidth: 0.5,
-                borderBottomColor: "gray", marginBottom: 8,
-                padding: 10,
+                flexDirection: 'row',
+                paddingVertical: 12,
+                backgroundColor: "white",
+                borderBottomColor: 'gray',
+                borderBottomWidth: 0.5,
+                paddingHorizontal: 10,
+                justifyContent: 'space-between',
             }}>
                 <Image style={{
                     width: 100, height: 160
@@ -202,8 +208,22 @@ export default function plSP({ navigation }) {
                     justifyContent: 'space-around',
                     paddingLeft: 13
                 }}>
-                    <Text style={{}} numberOfLines={3}>{item.title}</Text>
-                    <Text style={{}}>Price: {item.Price}</Text>
+                    <Text style={{
+                        fontSize: 17,
+                        fontWeight: 'bold',
+                        width: 200,
+                        //     backgroundColor: 'orange'
+                        //     textAlign: 'center',
+                    }}
+                        numberOfLines={2}
+                        resizeMode="tail"
+
+                    >{item.title}</Text>
+                    <Text style={{
+                        color: '#E4606E',
+                        fontWeight: 'bold',
+                        fontSize: 18,
+                    }}>Price: {item.Price}</Text>
 
                     <View style={{
                         flexDirection: 'row',
@@ -215,23 +235,40 @@ export default function plSP({ navigation }) {
                                 : decrementQuantity(item)
                         }
                         }>
-                            <AntDesign name="minussquareo" size={24} color="black" />
+                            <AntDesign name="minussquareo" size={24} color="gray" />
                         </TouchableOpacity>
 
 
 
-                        <Text style={{ paddingHorizontal: 10 }}>{item.quantity}</Text>
+                        <Text style={{
+                            paddingHorizontal: 10,
+                            fontWeight: 'bold',
+                            fontSize: 17,
+                            color: 'red'
+                        }}>{item.quantity}</Text>
 
                         <TouchableOpacity onPress={() => incrementQuantity(item)}>
-                            <AntDesign name="plussquareo" size={24} color="black" />
+                            <AntDesign name="plussquareo" size={24} color="gray" />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => deleteFromCart(item)}>
-                            <Entypo style={{ paddingLeft: 80 }} name="trash" size={24} color="black" />
-                        </TouchableOpacity>
+
                     </View>
+
                 </View>
-            </View>
+
+                <View style={{}}>
+                    <TouchableOpacity style={{
+                        //     width: '50%',
+                        alignItems: 'flex-end',
+                        //  backgroundColor: 'gray'
+                    }} onPress={() => deleteFromCart(item)}>
+                        <AntDesign
+                            style={{
+                            }}
+                            name="close" size={24} color="gray" />
+                    </TouchableOpacity>
+                </View>
+            </View >
         )
     }
 
@@ -422,11 +459,6 @@ export default function plSP({ navigation }) {
                                     fontWeight: 'bold',
                                     fontSize: 17
                                 }}>Thành tiền</Text>
-                                <Text style={{
-                                    color: 'red',
-                                    fontWeight: 'bold',
-                                    fontSize: 17
-                                }}>{result}</Text>
 
                             </View>
 
