@@ -6,10 +6,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import nhaphang from './screen/nhaphang/nhaphang.js'
 import trangchu2 from './screen/trangchu/trangchu2.js'
+import plSP from './screen/trangchu/plSP.js'
+
 import { Tab0 } from './Tab';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistReducer, persistStore } from 'redux-persist';
+
 
 const Stack = createStackNavigator();
 
@@ -21,7 +24,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Tab0" component={Tab0}
-            //    options={{ headerShown: false }}
+              options={{ headerShown: false }}
             />
 
           </Stack.Navigator>

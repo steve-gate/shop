@@ -40,6 +40,7 @@ export function Tab0() {
                             ? < FontAwesome5 name="home" size={24} color="#4197EC" />
                             : < FontAwesome5 name="home" size={24} color="gray" />
                     ),
+
                 }}
             />
 
@@ -65,7 +66,6 @@ export function Tab0() {
                             ? <AntDesign name="message1" size={24} color="#4197EC" />
                             : <AntDesign name="message1" size={24} color="gray" />
                     ),
-
                 }}
             />
         </Tab.Navigator>
