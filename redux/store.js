@@ -21,12 +21,23 @@ import cartSlice from './cartSlice';
 
 
 
+const persistConfig = {
+    key: 'root',
+    storage: AsyncStorage,
+}
+
+
+
 export const store = configureStore({
     reducer: {
         products: productsSlice,
-        cartItems: cartSlice
+        cartItems: persistReducer(persistConfig, cartSlice)
     },
-
+    middleware: getDefaultMiddleware({
+        serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+        }
+    })
 });
-
+export const persistor = persistStore(store)
 

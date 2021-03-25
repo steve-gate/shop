@@ -7,8 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import nhaphang from './screen/nhaphang/nhaphang.js'
 import trangchu2 from './screen/trangchu/trangchu2.js'
 import { Tab0 } from './Tab';
-import { store } from './redux/store';
-
+import { store, persistor } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistReducer, persistStore } from 'redux-persist';
 
 const Stack = createStackNavigator();
 
@@ -16,14 +17,16 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Tab0" component={Tab0}
-            options={{ headerShown: false }}
-          />
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Tab0" component={Tab0}
+            //    options={{ headerShown: false }}
+            />
 
-        </Stack.Navigator>
-      </NavigationContainer >
+          </Stack.Navigator>
+        </NavigationContainer >
+      </PersistGate>
     </Provider>
   );
 }
